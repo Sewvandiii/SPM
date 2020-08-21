@@ -5,6 +5,11 @@
  */
 package timetablemanagement;
 
+
+import WorkingHours.Working;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Thili
@@ -16,6 +21,7 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -38,15 +44,17 @@ public class Home extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        home_locationButton = new javax.swing.JButton();
+        btn_statics = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        workingHours = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("TimeTable Management system");
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1000, 800));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -122,20 +130,25 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(204, 0, 255));
-        jButton2.setFont(new java.awt.Font("Algerian", 1, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home_icons/icons8-location-70.png"))); // NOI18N
-        jButton2.setText("Location");
-
-        jButton3.setBackground(new java.awt.Color(204, 0, 255));
-        jButton3.setFont(new java.awt.Font("Algerian", 1, 24)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home_icons/icons8-graph-70.png"))); // NOI18N
-        jButton3.setText("statics");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        home_locationButton.setBackground(new java.awt.Color(204, 0, 255));
+        home_locationButton.setFont(new java.awt.Font("Algerian", 1, 24)); // NOI18N
+        home_locationButton.setForeground(new java.awt.Color(255, 255, 255));
+        home_locationButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home_icons/icons8-location-70.png"))); // NOI18N
+        home_locationButton.setText("Location");
+        home_locationButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                home_locationButtonActionPerformed(evt);
+            }
+        });
+
+        btn_statics.setBackground(new java.awt.Color(204, 0, 255));
+        btn_statics.setFont(new java.awt.Font("Algerian", 1, 24)); // NOI18N
+        btn_statics.setForeground(new java.awt.Color(255, 255, 255));
+        btn_statics.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home_icons/icons8-graph-70.png"))); // NOI18N
+        btn_statics.setText("statics");
+        btn_statics.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_staticsActionPerformed(evt);
             }
         });
 
@@ -145,11 +158,16 @@ public class Home extends javax.swing.JFrame {
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home_icons/icons8-physics-book-70.png"))); // NOI18N
         jButton4.setText("SUBJECTs");
 
-        jButton5.setBackground(new java.awt.Color(204, 0, 255));
-        jButton5.setFont(new java.awt.Font("Algerian", 1, 24)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home_icons/icons8-time-machine-70.png"))); // NOI18N
-        jButton5.setText("Woking hours");
+        workingHours.setBackground(new java.awt.Color(204, 0, 255));
+        workingHours.setFont(new java.awt.Font("Algerian", 1, 24)); // NOI18N
+        workingHours.setForeground(new java.awt.Color(255, 255, 255));
+        workingHours.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home_icons/icons8-time-machine-70.png"))); // NOI18N
+        workingHours.setText("Woking hours");
+        workingHours.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                workingHoursActionPerformed(evt);
+            }
+        });
 
         jButton7.setBackground(new java.awt.Color(204, 0, 255));
         jButton7.setFont(new java.awt.Font("Algerian", 1, 24)); // NOI18N
@@ -165,7 +183,7 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(158, 158, 158)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(home_locationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(162, 162, 162)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,8 +199,8 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(workingHours, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_statics, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(141, 141, 141))
         );
         jPanel3Layout.setVerticalGroup(
@@ -200,11 +218,11 @@ public class Home extends javax.swing.JFrame {
                 .addGap(68, 68, 68)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(workingHours, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(home_locationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_statics, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37))
         );
 
@@ -229,13 +247,13 @@ public class Home extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addGap(35, 35, 35)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 840));
@@ -251,9 +269,29 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btn_staticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_staticsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+      
+    }//GEN-LAST:event_btn_staticsActionPerformed
+
+    private void home_locationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_home_locationButtonActionPerformed
+        // TODO add your handling code here:
+          
+       
+    }//GEN-LAST:event_home_locationButtonActionPerformed
+
+    private void workingHoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_workingHoursActionPerformed
+        try {
+            // TODO add your handling code here:
+
+            new WorkingHours.Working().setVisible(true);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.setVisible(false); 
+        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE); 
+        this.dispose(); 
+    }//GEN-LAST:event_workingHoursActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,11 +329,10 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_statics;
+    private javax.swing.JButton home_locationButton;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -307,5 +344,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton workingHours;
     // End of variables declaration//GEN-END:variables
 }
